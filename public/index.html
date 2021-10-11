@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Svelte app</title>
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="stylesheet" href="/global.css" />
+    <link rel="stylesheet" href="/build/bundle.css" />
+
+    <script type="module">
+      import {
+        Amplify,
+        Credentials,
+      } from "https://main.d2s4izc5nm039l.amplifyapp.com/packages/core/4.3.1/core-esm.js"
+      import { Auth } from "https://main.d2s4izc5nm039l.amplifyapp.com/packages/auth/4.3.9/auth-esm.js"
+      import Cache from "https://main.d2s4izc5nm039l.amplifyapp.com/packages/cache/4.0.21/cache-esm.js"
+      Amplify.configure({
+        identityPoolId: "us-east-1:af94db9e-5770-48a0-9834-9b5aab0e9d55",
+        region: "us-east-1",
+      })
+
+      Cache.setItem("amplify", "works yes!")
+      console.log(Cache.getItem("amplify"))
+
+      Credentials.get().then(creds => console.log({ creds }))
+      console.log(Amplify)
+      Window.Amplify = Amplify
+    </script>
+
+    <script defer src="/build/bundle.js"></script>
+  </head>
+
+  <body></body>
+</html>
